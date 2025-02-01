@@ -9,6 +9,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { UploadBookDialog } from "@/components/upload-book-dialog";
 
+import * as React from "react";
+import { Progress } from "@/components/ui/progress";
 interface Book {
   id: number;
   title: string;
@@ -51,12 +53,11 @@ const books: Book[] = [
 export function BookList() {
   return (
     <div>
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-5xl font-bold tracking-tight first:mt-0">
-          My Library
-        </h2>
+      <div className="flex justify-between items-center mb-8">
+        <h2 className="text-5xl font-bold tracking-tight">My Library</h2>
         <UploadBookDialog />
       </div>
+      <h1 className="text-xl font-bold tracking-tight pb-4">Science Fiction</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {books.map((book) => (
           <Card key={book.id} className="flex flex-col">
@@ -85,6 +86,10 @@ export function BookList() {
             <CardFooter className="p-4 pt-0">
               <Button className="w-full text-md">Read Now</Button>
             </CardFooter>
+            <h1 className="px-4 text-bold">Progress: </h1>
+            <div className="px-4 pb-6 pt-1">
+              <Progress value={33} />
+            </div>
           </Card>
         ))}
       </div>
